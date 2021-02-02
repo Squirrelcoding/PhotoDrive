@@ -1,4 +1,50 @@
-<form method="POST" action="/logIn">
-  <input name="imageName" type="text" placeholder="username"/>
-	<input type="submit" value="Submit">
-</form>
+<!DOCTYPE html>
+<html lang="en">
+<link rel="icon" href="/icon.png">
+<title>Hello</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.metroui.org.ua/v4.3.2/css/metro-all.min.css">
+<link rel="stylesheet" href="/html-stuff/style.css" type="text/css" />
+<style>
+body,h1,h2,h3,h4,h5,h6 {
+	font-family: "Lato", sans-serif;
+}
+.w3-bar,h1,button {
+	font-family: "Montserrat", sans-serif
+}
+.fa-anchor,.fa-coffee {
+	font-size: 200px
+}
+</style>
+<body>
+<div class="w3-top">
+    <div class="w3-bar w3-black w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">Home/Upload</a>
+		<a href="/seeImages" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">See Images</a>
+    <a href="/rename" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">Rename an Image</a>
+    <a href="/delete" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">Delete an Image</a>
+    <a href="/accounts" class="w3-bar-item w3-button w3-padding-large w3-white">Accounts</a>
+  </div>
+	</div>
+	<br>
+	<br>
+  <div class="center">
+	<h2>Log In</h2>
+		<form method="POST" action="/logIn">
+			<input name="username" type="text" placeholder="username"/>
+			<input name="password" type="password" placeholder="password"/>
+			<input type="submit" value="Submit">
+		</form>
+		<%=message%>
+ </div>	
+  </body>
+</html>

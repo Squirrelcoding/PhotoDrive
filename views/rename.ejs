@@ -30,27 +30,27 @@ body,h1,h2,h3,h4,h5,h6 {
     <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
     <a href="/" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">Home/Upload</a>
 		<a href="/seeImages" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">See Images</a>
-    <a href="/rename" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">Rename an Image</a>
+    <a href="/rename" class="w3-bar-item w3-button w3-padding-large w3-white">Rename an Image</a>
     <a href="/delete" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">Delete an Image</a>
-    <a href="/accounts" class="w3-bar-item w3-button w3-padding-large w3-white">Accounts</a>
-
+    <a href="/accounts" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white w3-text-white">Accounts</a>
   </div>
 	</div>
 	<br>
 	<br>
   <div class="center">
-	<h2>Create Account</h2>
-	<form action="/create" method="POST">
-		<input type="text" name="username" placeholder="Username">
-		<br>
-		<input type="password" name="password" placeholder="Password">
-		<br>
-		<input type="password" name="confirmPassword" placeholder="Confirm password">	
-		<br>
-		<input type="submit">
-	</form>
-	<p><a href="/join">Learn more about why Ministorage is best for you.</a></p>
-	<%=message%>
+	<h2>Rename Image</h2>
+		<form action="/renameImage" method="POST">
+			<input type="text" name="renamedImage" placeholder="Original Name">
+			<br>
+			<input type="text" name="newName" placeholder="New Name">
+			<br>
+			<input type="submit">
+		</form>
+		<p class="Font2"><%=message%></p>
+		<h3>Images <hr> <%-images%></h3>
  </div>	
   </body>
 </html>
+
+
+

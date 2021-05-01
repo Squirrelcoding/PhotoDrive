@@ -102,10 +102,12 @@ res.render('create', {message:"The password's do not match! Pleaase try again."}
 
 app.post('/logIn', async (req, res) => {
 	var username = req.body.username;
-	req.app.locals.username = username;
 	var password = req.body.password;
  	var ref = await db.collection('PDUsers').doc(username);
  	var doc = await ref.get();
+	console.log(doc.data().username + " Is the username")
+	req.app.locals[doc.data().username] = req.body.username;
+	console.log(req.app.locals[doc.data().username]  + " Has logged in.")  
 	if (password == doc.data().password && doc.exists) {
 		res.render('index', {imageMessage:""})
 	}
@@ -115,16 +117,16 @@ app.post('/logIn', async (req, res) => {
 
 	app.post('/image', async (req, res) => {
 		var imageName = req.body.imageName
-		console.log(req.app.locals.username + " Is viewing images")
+		console.log([doc.data().username]+ " Is viewing images")  
 		let bucketName = 'gs://poopnet-4fb22.appspot.com'
-		var filename = imageName
+		var filename = imageName;
 		var downloadFile = async() => {
 			let destFilename = './views/images/image.png';
 			var options = {
 				destination: destFilename
 			};
-			await storage.bucket(bucketName).file(req.app.locals.username + '/' + filename).download(options);
-			var g = await functions.retrieveImages(req.app.locals.username)
+			await storage.bucket(bucketName).file(doc.data().username + '/' + filename).download(options);
+			var g = await functions.retrieveImages(doc.data().username)
 			res.render('see', {images:Object.keys(g).map(k => g[k]).join('<br><br>'), imageLink:'images/image.png'});
 		} 
 	downloadFile();
@@ -193,5 +195,5 @@ app.post('/deleteImage', async(req, res) => {
 	functions.deleteImage(req.app.locals.username, imageDeleted);
 	res.render('delete', {message:"Image deleted successfuly!", images:""});
 	}
-})
+});
 });
